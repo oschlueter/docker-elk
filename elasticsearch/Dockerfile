@@ -9,10 +9,11 @@ COPY bin/ bin/
 # Search Guard plugin
 ARG ELK_VERSION
 ARG SG_VERSION
-RUN elasticsearch-plugin install --batch com.floragunn:search-guard-6:${ELK_VERSION}-${SG_VERSION} \
-	&& chmod +x plugins/search-guard-6/tools/*.sh \
+RUN elasticsearch-plugin install --batch com.floragunn:search-guard-7:${ELK_VERSION}-${SG_VERSION} \
+	&& chmod +x plugins/search-guard-7/tools/*.sh \
 	&& chown -R elasticsearch config/sg/ \
 	&& chmod -R go= config/sg/
 
 # Add your elasticsearch plugins setup here
 # Example: RUN elasticsearch-plugin install analysis-icu
+env JAVA_HOME /usr/share/elasticsearch/jdk
